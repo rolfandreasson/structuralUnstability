@@ -1,0 +1,77 @@
+Going through the classification and checking which reflexive polytopes
+are structurally stable, semistable and unstable reflexive polytopes.
+Also checking which are Li-admissable.
+Ambient dimension: 2
+
+Index: 0
+Structurally stable
+Li-admissable
+
+Index: 1
+Structurally strictly semistable with 2
+semistable facets.
+Li-admissable
+
+Index: 2
+Structurally stable
+
+Index: 3
+Structurally stable
+Li-admissable
+
+Index: 4
+Structurally unstable with 1
+unstable facets.
+
+Index: 5
+Structurally stable
+
+Index: 6
+Structurally strictly semistable with 2
+semistable facets.
+Li-admissable
+
+Index: 7
+Structurally strictly semistable with 2
+semistable facets.
+
+Index: 8
+Structurally strictly semistable with 2
+semistable facets.
+
+Index: 9
+Structurally stable
+Non-singular
+
+Index: 10
+Structurally unstable with 1
+unstable facets.
+
+Index: 11
+Structurally stable
+Non-singular
+
+Index: 12
+Structurally strictly semistable with 2
+semistable facets.
+Li-admissable
+
+Index: 13
+Structurally stable
+Non-singular
+
+Index: 14
+Structurally stable
+Non-singular
+Li-admissable
+
+Index: 15
+Structurally stable
+Non-singular
+Li-admissable
+
+In total there are 16 reflexive polytopes in the given dimension
+ of which there are
+Structurally strictly semistable: 5
+Structurally unstable: 2
+Li-admissable: 7

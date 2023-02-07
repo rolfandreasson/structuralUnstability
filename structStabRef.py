@@ -3,9 +3,11 @@ import sys
 from sage.all import *
 
 
-n = 3
+n = 2
 
-print("Structurally stable, semistable and unstable reflexive polytopes")
+print("Going through the classification and checking which reflexive polytopes")
+print("are structurally stable, semistable and unstable reflexive polytopes.")
+print("Also checking which are Li-admissable.")
 print("Ambient dimension: ", end="")
 print(n)
 print()
@@ -19,6 +21,7 @@ elif n==3:
 nbr_of_stable = 0
 nbr_of_strictly_semistable = 0
 nbr_of_unstable = 0
+nbr_of_li_admissable = 0
 
 
 
@@ -45,6 +48,16 @@ for index in range(0, nbr_of_reflexive):
     P_polar = P.polar()
     P_polar_h = Polyhedron(vertices = P_polar.vertices(), backend = 'normaliz')
     volume_polar_P = P_polar_h.volume(measure='induced_lattice')
+
+    PM = P.vertex_facet_pairing_matrix()
+    li_unstable = 0
+    for i in range(0,P.nvertices()):
+        if li_unstable == 1:
+            break
+        for j in range(0,P.nfacets()):
+            if PM[j,i] - 1 == 0:
+                li_unstable = 1
+                break
 
 
     #Check if P correspond to non-singular variety
@@ -116,27 +129,38 @@ for index in range(0, nbr_of_reflexive):
         # Check the stability
         if relative_facet_volume > relative_star_volume: #and P.nvertices() == n+1 and P.nfacets() == n+1:
             nbr_of_unstable_facets += 1
+            #if li_unstable == 0:
+            #    print("flag")
         elif relative_facet_volume == relative_star_volume:
             nbr_of_strictly_semistable_facets +=1
+            #if li_unstable == 0:
+            #    print("flag")
+
+
 
 
 
     if nbr_of_unstable_facets > 0:
-        print("Unstable with ", end="")
+        print("Structurally unstable with ", end="")
         print(nbr_of_unstable_facets)
         print("unstable facets.")
         nbr_of_unstable += 1
     elif nbr_of_strictly_semistable_facets > 0:
-        print("Strictly semistable with ", end="")
+        print("Structurally strictly semistable with ", end="")
         print(nbr_of_strictly_semistable_facets)
         print("semistable facets.")
         nbr_of_strictly_semistable += 1
     else:
-        print("Stable")
+        print("Structurally stable")
         nbr_of_stable += 1
 
     if non_singular == 1:
         print('Non-singular')
+
+    if li_unstable == 0:
+        nbr_of_li_admissable += 1
+        print("Li-admissable")
+
 
     print()
 
@@ -144,12 +168,12 @@ print("In total there are ", end="")
 print(nbr_of_reflexive, end="")
 print(" reflexive polytopes in the given dimension")
 print(" of which there are")
-print("Structurally stable: ",end="")
-print(nbr_of_stable)
 print("Structurally strictly semistable: ", end="")
 print(nbr_of_strictly_semistable)
 print("Structurally unstable: ", end="")
 print(nbr_of_unstable)
+print("Li-admissable: ", end="")
+print(nbr_of_li_admissable)
 
 
 
